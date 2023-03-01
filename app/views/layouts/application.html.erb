@@ -6,13 +6,13 @@
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
-    <script src="https://kit.fontawesome.com/484e6509e8.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/1495a61f52.js" crossorigin="anonymous"></script>
   </head>
 
   <body>
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
-      <%= link_to 'recipegram', root_path, class: "navbar-brand" %>
+      <%= link_to 'recipegram', mountains_path, class: "navbar-brand" %>
       <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -24,10 +24,10 @@
               <%= link_to 'マイページ', user_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
-                <%= link_to '新規投稿', new_recipe_path, class: "nav-link" %>
+                <%= link_to '新規投稿', "#", class: "nav-link" %>
             </li>
             <li class="nav-item">
-                <%= link_to '投稿一覧', recipes_path, class: "nav-link" %>
+                <%= link_to '山一覧', mountains_path, class: "nav-link" %>
             </li>
             <li class="nav-item">
               <%= link_to "ログアウト", destroy_user_session_path, method: :get, class: "nav-link" %>
