@@ -8,17 +8,14 @@
               <%= @mountain.name %>
             </p>
           </header>
+          
           <div class="card-content">
-            <div class="content average-score">
-              <div class="star-rating mb-2">
-                <div class="star-rating-front" style="width: <%= @mountain.review_score_percentage %>%">★★★★★</div>
-                <div class="star-rating-back">★★★★★</div>
-              </div>
-              <div class="average-score-display ml-3 pt-2">
-                <%= @mountain.avg_score %>点（<%= @mountain.reviews.count %>件のレビュー）
-              </div>
-            </div>
+            <p class="result-rating-rate">
+              <span class="star5_rating" data-rate="<%= @mountain.avg_score %>"></span>
+              <span class="number_rating"><%= @mountain.avg_score %>点（<%= @mountain.reviews.count %>件のレビュー）</span>
+            </p>
           </div>
+          
         </div>
         <%= render 'reviews/form', review: @review, mountain: @mountain %>
       </div>
