@@ -1,0 +1,32 @@
+<div class="container mt-5">
+  <div class="row">
+    <div class="col-6 mx-auto">
+      <h2>編集</h2>
+      <div class="rating-box mt-3">
+        
+        <%= form_with model: @review do |f| %>
+          <div class="form-group">
+            <label>レシピ名</label>
+            <%= f.text_field :title, class: "form-control" %>
+          </div>
+        
+          <div class="form-group">
+            <label>作り方</label>
+            <%= f.text_area :content, class: "form-control" %>
+          </div>
+          
+          <div class="form-group">
+            <label>作り方</label>
+            <%= f.select :score, [["最悪", 1], ["微妙", 2], ["普通", 3], ["良い", 4], ["最高", 5]], include_blank: "選択して下さい" %>
+          </div>
+        
+          <div>
+            <%= f.submit "保存", class: "btn btn-success" %>
+          </div>
+          
+        <% end %>
+
+      </div>
+    </div>
+  </div>
+</div>

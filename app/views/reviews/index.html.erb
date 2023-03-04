@@ -29,6 +29,8 @@
                 <td><%= review.user.name %></td>
                 <td><%= review.score %></td>
                 <td><%= review.content %></td>
+                <td><%= link_to "編集", edit_review_path(review) %></td>
+                <td><%= button_to "削除", review_path(review), method: :delete %></td>
               </tr>
             <% end %>
           </tbody>
