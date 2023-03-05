@@ -1,4 +1,10 @@
+<%= search_form_for @q do |f| %>
+  <%= f.search_field :name_or_kana_cont, placeholder: '山の名前をいれて検索しよう(ひらがな可)' %>
+  <%= f.submit %>
+<% end %>
+
 <%= link_to "評価順", mountains_path(sort_top_review: "true") %>
+<%= link_to "標高順", mountains_path(height: "true") %>
 
 <% @mountains.each do |mountain| %>
   <div class="container-fluid">
@@ -13,7 +19,9 @@
 
             <div class="row">
               <div class="col-12">
-                <h3 class="card-title"><%= mountain.name %>(<%= mountain.kana %>)</h3>
+                <%= link_to mountain_reviews_path(mountain) do%>
+                  <h3 class="card-title"><%= mountain.name %>(<%= mountain.kana %>)</h3>
+                <% end %>
               </div>
             </div>
     
@@ -22,6 +30,15 @@
                 <h5 class="result-rating-rate">
                   <span class="star5_rating" data-rate="<%= mountain.avg_score %>"></span>
                   <span class="number_rating"><%= mountain.avg_score %>点（<%= mountain.reviews.count %>件のレビュー）</span>
+                </h5>
+              </div>
+            </div>
+            
+            <div class="row">
+              <div class="col-12">
+                <h5 class="result-rating-rate">
+                  <span class="star5_rating" data-rate="<%= mountain.avg_level %>"></span>
+                  <span class="number_rating"><%= mountain.avg_level %>点（<%= mountain.reviews.count %>件のレビュー）</span>
                 </h5>
               </div>
             </div>
@@ -42,10 +59,7 @@
     
             <div class="row">
               <div class="col-2">
-                <%= link_to mountain_reviews_path(mountain) do %>レビューを見る<% end %>
-              </div>
-              <div class="col-2">
-              <%= link_to mountain_path(mountain) do %>レビューを書く<% end %>
+                <%= link_to mountain_path(mountain) do %>レビューを書く<% end %>
               </div>
             </div>
           </div>

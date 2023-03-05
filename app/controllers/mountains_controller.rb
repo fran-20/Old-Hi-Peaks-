@@ -1,14 +1,16 @@
 class MountainsController < ApplicationController
   before_action :authenticate_user!, only: [:show]
   def index
+    @q = Mountain.ransack(params[:q])
+    @mountains = @q.result.includes(:reviews).order(created_at: :desc)
+    
     if params[:sort_top_review]
-      @mountains = Mountain.all.each do |mountain|
-        mountain.average = mountain.avg_score
-      end
-      @mountains = @mountains.sort_by { |mountain| mountain.average }.reverse
+      @mountains = @mountains.sort_by { |mountain| mountain.avg_score }.reverse
     else
-      @mountains = Mountain.all
+      @q = Mountain.ransack(params[:q])
+      @mountains = @q.result.includes(:reviews).order(created_at: :asc)
     end
+    
   end
 
   def show

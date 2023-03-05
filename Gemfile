@@ -74,3 +74,4 @@ end
 gem 'devise'
 gem 'bootstrap'
 gem 'jquery-rails'
+gem 'ransack'

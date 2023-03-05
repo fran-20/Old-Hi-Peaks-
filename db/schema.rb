@@ -27,7 +27,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_130341) do
     t.text "content"
     t.integer "score"
     t.integer "level"
-    t.time "time"
+    t.date "startdate"
+    t.string "alltime"
+    t.string "activetime"
     t.integer "image"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false

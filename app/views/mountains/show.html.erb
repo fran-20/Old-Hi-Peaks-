@@ -1,3 +1,57 @@
+<div class="container-fluid">
+  <div class="card">
+    <div class="row">
+      <div class="col-12">
+        <h3 class="card-title"><%= @mountain.name %>に登った記録</h3>
+        <%= render 'reviews/form', review: @review, mountain: @mountain %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-12">
+        <h5 class="result-rating-rate">
+          <span class="star5_rating" data-rate="<%= @mountain.avg_score %>"></span>
+          <span class="number_rating"><%= @mountain.avg_score %>点（<%= @mountain.reviews.count %>件のレビュー）</span>
+        </h5>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-12">
+        <h5 class="result-rating-rate">
+          <span class="star5_rating" data-rate="<%= @mountain.avg_level %>"></span>
+          <span class="number_rating"><%= @mountain.avg_level %>点（<%= @mountain.reviews.count %>件のレビュー）</span>
+        </h5>
+      </div>
+    </div>
+    
+    <hr>
+
+    <div class="row">
+      <div class="col-12">
+        <p class="card-title">標高：<%= @mountain.height %>m</p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-12">
+        <p class="card-title">山域：<%= @mountain.area %></p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <%= link_to mountain_reviews_path(@mountain) do %>レビューを見る<% end %>
+      </div>
+      <div class="col-2">
+      <%= link_to mountain_path(@mountain) do %>レビューを書く<% end %>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
 <section class="section mt-6">
   <div class="container">
     <div class="columns is-centered">
