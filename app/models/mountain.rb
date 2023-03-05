@@ -1,5 +1,6 @@
 class Mountain < ApplicationRecord
   has_many :reviews, dependent: :destroy
+  attr_accessor :average
   
   def avg_score
     unless self.reviews.empty?
@@ -16,5 +17,5 @@ class Mountain < ApplicationRecord
       0.0
     end
   end
-  
+
 end

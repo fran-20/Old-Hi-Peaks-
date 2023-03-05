@@ -1,7 +1,14 @@
 class MountainsController < ApplicationController
   before_action :authenticate_user!, only: [:show]
   def index
-    @mountains = Mountain.all
+    if params[:sort_top_review]
+      @mountains = Mountain.all.each do |mountain|
+        mountain.average = mountain.avg_score
+      end
+      @mountains = @mountains.sort_by { |mountain| mountain.average }.reverse
+    else
+      @mountains = Mountain.all
+    end
   end
 
   def show
