@@ -13,10 +13,7 @@ class CreateReviews < ActiveRecord::Migration[7.0]
       t.string :route
       t.string :title
       t.text :content
-      
-      t.integer :image1
-      t.integer :image2
-      t.integer :image3
+      t.string :image
 
       t.timestamps
     end

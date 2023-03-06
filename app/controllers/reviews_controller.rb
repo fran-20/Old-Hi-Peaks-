@@ -1,5 +1,5 @@
 class ReviewsController < ApplicationController
-  before_action :authenticate_user!, only: [:create]
+  before_action :authenticate_user!
   
   def new
     @mountain = Mountain.find(params[:mountain_id])
@@ -47,6 +47,6 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:mountain_id, :title, :content, :score, :level, :startdate, :alltime, :activetime, :image)
+    params.require(:review).permit(:mountain_id, :start_time, :end_time, :number_of_nights, :rest_time, :score, :level, :start_point, :route, :title, :content, :image)
   end
 end
