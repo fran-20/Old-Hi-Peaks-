@@ -4,39 +4,29 @@
 
     <div class="row">
       <div class="col-2">
-        <p class="fs-4">
-          <%= f.label :start_time, "開始日時" %>
+        <p class="fs-5">
+          山行日時
         </p>
       </div>
-      <div class="col-8">
+      <div class="col-2">
         <p class="fs-3">
           <%= f.datetime_local_field :start_time, class: "form-control" %>
         </p>
       </div>
-    </div>
-    
-    <div class="row">
-      <div class="col-2">
-        <p class="fs-4">
-          <%= f.label :end_time, "下山日時" %>
+      <div class="col-1">
+        <p class="fs-5">
+          ～
         </p>
       </div>
-      <div class="col-8">
+      <div class="col-2">
         <p class="fs-3">
           <%= f.datetime_local_field :end_time, class: "form-control" %>
         </p>
       </div>
-    </div>
-
-    <div class="row">
+      
       <div class="col-2">
-        <p class="fs-4">
-          <%= f.label :number_of_nights, "日数" %>
-        </p>
-      </div>
-      <div class="col-8">
         <p class="fs-3">
-          <%= f.select :number_of_nights, [["日帰り", 1], ["1泊2日", 2], ["2泊3日", 3], ["3泊4日", 4], ["4泊5日", 5], ["5泊6日", 5], ["6泊7日", 5], ["7泊8日", 5], ["8泊以上", 5]], {include_blank: "選択して下さい"}, class: "form-control" %>
+          <%= f.select :number_of_nights, [["日帰り", 1], ["1泊2日", 2], ["2泊3日", 3], ["3泊4日", 4], ["4泊5日", 5], ["5泊6日", 5], ["6泊7日", 5], ["7泊8日", 5], ["8泊以上", 5]], {include_blank: "泊数を選択"}, class: "form-control" %>
         </p>
       </div>
     </div>
@@ -47,9 +37,9 @@
           <%= f.label :rest_time, "休憩時間" %>
         </p>
       </div>
-      <div class="col-8">
+      <div class="col-2">
         <p class="fs-3">
-          <%= f.time_field :rest_time, class: "form-control" %>
+          <%= f.number_field :rest_time, in: 1.0..50.0, step: 0.5, class: "form-control" %>
         </p>
       </div>
     </div>
@@ -135,7 +125,7 @@
     <div class="row">
       <div class="col-2">
         <p class="fs-4">
-          <%= f.label :image, "写真(～3枚投稿可)" %>
+          <%= f.label :image, "写真" %>
         </p>
       </div>
       <div class="col-8">
