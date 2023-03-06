@@ -1,26 +1,158 @@
-<p class="is-size-4 mb-3">レビューを書く</p>
-<% if review.errors.any? %>
-  <div class="notification is-danger">
-    <h2><%= review.errors.count %>件のエラーがあります。</h2>
-    <ul>
-      <% review.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
-
-<div class="rating-box mt-3">
+<div class="container-fluid">
   <%= form_with model: review, url: mountain_reviews_path(mountain), local: true do |f| %>
     <%= f.hidden_field :mountain_id, value: mountain.id %>
-    <%= f.select :score, [["最悪", 1], ["微妙", 2], ["普通", 3], ["良い", 4], ["最高", 5]], include_blank: "選択して下さい" %>
-    <%= f.select :level, [["簡単", 1], ["少し簡単", 2], ["普通", 3], ["少し危険", 4], ["危険", 5]], include_blank: "選択して下さい" %>
-    <%= f.date_field :startdate, class: 'form-control' %>
-    <%= f.select :alltime, [["日帰り", 1], ["1泊2日", 2], ["2泊3日", 3], ["3泊4日", 4], ["4泊5日", 5], ["5泊6日", 5], ["6泊7日", 5], ["7泊8日", 5], ["8泊以上", 5]], include_blank: "選択して下さい" %>
-    <%= f.select :activetime, [["1時間以内", 1], ["1～2時間", 2], ["2～3時間", 3], ["3～4時間", 4], ["4～5時間", 5], ["5～6時間", 6], ["6～7時間", 7], ["7～8時間", 8], ["8～9時間", 9], ["9～10時間", 10], ["10～11時間", 11], ["11時間以上", ]], include_blank: "選択して下さい" %>
-    <%= f.text_area :content, class: "textarea" %>
-    <%= f.file_field :image %>
-    <%= f.submit "保存", class: "button mt-3" %>
-    <%= link_to "他のレビューを見る", mountain_reviews_path(mountain), class: "button light ml-3 mt-3" %>
+
+    <div class="row">
+      <div class="col-2">
+        <p class="fs-4">
+          <%= f.label :start_time, "開始日時" %>
+        </p>
+      </div>
+      <div class="col-8">
+        <p class="fs-3">
+          <%= f.datetime_local_field :start_time, class: "form-control" %>
+        </p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-2">
+        <p class="fs-4">
+          <%= f.label :end_time, "下山日時" %>
+        </p>
+      </div>
+      <div class="col-8">
+        <p class="fs-3">
+          <%= f.datetime_local_field :end_time, class: "form-control" %>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p class="fs-4">
+          <%= f.label :number_of_nights, "日数" %>
+        </p>
+      </div>
+      <div class="col-8">
+        <p class="fs-3">
+          <%= f.select :number_of_nights, [["日帰り", 1], ["1泊2日", 2], ["2泊3日", 3], ["3泊4日", 4], ["4泊5日", 5], ["5泊6日", 5], ["6泊7日", 5], ["7泊8日", 5], ["8泊以上", 5]], {include_blank: "選択して下さい"}, class: "form-control" %>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p class="fs-4">
+          <%= f.label :rest_time, "休憩時間" %>
+        </p>
+      </div>
+      <div class="col-8">
+        <p class="fs-3">
+          <%= f.time_field :rest_time, class: "form-control" %>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p class="fs-4">
+          <%= f.label :score, "満足度" %>
+        </p>
+      </div>
+      <div class="col-8">
+        <p class="fs-3">
+          <%= f.select :score, [["★☆☆☆☆ う～ん", 1], ["★★☆☆☆ 普通", 2], ["★★★☆☆ 良かった", 3], ["★★★★☆ とても良かった", 4], ["★★★★★ 感動した", 5]], {include_blank: "選択して下さい"}, class: "form-control" %>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p class="fs-4">
+          <%= f.label :level, "難易度" %>
+        </p>
+      </div>
+      <div class="col-8">
+        <p class="fs-3">
+        <%= f.select :level, [["超初級",1], ["初級", 2], ["中級", 3], ["上級", 4], ["超上級", 5]], {include_blank: "選択して下さい"}, class: "form-control" %>
+        </p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-2">
+        <p class="fs-4">
+          <%= f.label :start_point, "登山口" %>
+        </p>
+      </div>
+      <div class="col-8">
+        <p class="fs-3">
+          <%= f.text_field :start_point, class: "form-control" %>
+        </p>
+      </div>
+    </div>
+    
+    <div class="row">
+      <div class="col-2">
+        <p class="fs-4">
+          <%= f.label :route, "登山ルート" %>
+        </p>
+      </div>
+      <div class="col-8">
+        <p class="fs-3">
+          <%= f.text_field :route, class: "form-control" %>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p class="fs-4">
+          <%= f.label :title, "タイトル" %>
+        </p>
+      </div>
+      <div class="col-8">
+        <p class="fs-3">
+          <%= f.text_field :title, class: "form-control" %>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p class="fs-4">
+          <%= f.label :content, "本文" %>
+        </p>
+      </div>
+      <div class="col-8">
+        <p class="fs-3">
+          <%= f.text_area :content, class: "form-control", rows: 10 %>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p class="fs-4">
+          <%= f.label :image, "写真(～3枚投稿可)" %>
+        </p>
+      </div>
+      <div class="col-8">
+        <p class="fs-3">
+          <%= f.file_field :image1, class: "form-control" %>
+          <%= f.file_field :image2, class: "form-control" %>
+          <%= f.file_field :image3, class: "form-control" %>
+        </p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-2">
+        <p class="fs-4">
+          <%= f.submit "保存", class: "btn btn-primary" %>
+        </p>
+      </div>
+    </div>
   <% end %>
 </div>

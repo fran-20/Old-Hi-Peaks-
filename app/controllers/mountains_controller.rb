@@ -12,7 +12,7 @@ class MountainsController < ApplicationController
     end
     
   end
-
+  
   def show
     @mountain = Mountain.find(params[:id])
     @review = Review.new

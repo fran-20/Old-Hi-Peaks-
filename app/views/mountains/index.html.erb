@@ -19,7 +19,7 @@
 
             <div class="row">
               <div class="col-12">
-                <%= link_to mountain_reviews_path(mountain) do%>
+                <%= link_to mountain_path(mountain) do%>
                   <h3 class="card-title"><%= mountain.name %>(<%= mountain.kana %>)</h3>
                 <% end %>
               </div>
@@ -59,7 +59,7 @@
     
             <div class="row">
               <div class="col-2">
-                <%= link_to mountain_path(mountain) do %>レビューを書く<% end %>
+                <%= link_to new_mountain_review_path(mountain) do %>レビューを書く<% end %>
               </div>
             </div>
           </div>

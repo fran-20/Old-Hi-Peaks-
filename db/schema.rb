@@ -15,7 +15,16 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_130341) do
     t.string "name"
     t.string "kana"
     t.integer "height"
+    t.string "pre1"
+    t.string "pre2"
+    t.string "pre3"
+    t.string "pre4"
     t.string "area"
+    t.string "mont_area"
+    t.string "alias1"
+    t.string "alias2"
+    t.string "alias3"
+    t.string "alias4"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -23,14 +32,19 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_130341) do
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "mountain_id", null: false
-    t.string "title"
-    t.text "content"
+    t.datetime "start_time"
+    t.datetime "end_time"
+    t.string "number_of_nights"
+    t.integer "rest_time"
     t.integer "score"
     t.integer "level"
-    t.date "startdate"
-    t.string "alltime"
-    t.string "activetime"
-    t.integer "image"
+    t.string "start_point"
+    t.string "route"
+    t.string "title"
+    t.text "content"
+    t.integer "image1"
+    t.integer "image2"
+    t.integer "image3"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["mountain_id"], name: "index_reviews_on_mountain_id"

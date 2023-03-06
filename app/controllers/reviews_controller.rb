@@ -1,21 +1,22 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!, only: [:create]
-  def index
+  
+  def new
     @mountain = Mountain.find(params[:mountain_id])
-    @reviews = @mountain.reviews
+    @review = Review.new
   end
 
   def create
+    @mountain = Mountain.find(params[:mountain_id])
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     if @review.save
-      redirect_to mountain_reviews_path(@review.mountain)
+      redirect_to mountain_path(@mountain)
     else
       @mountain = Mountain.find(params[:mountain_id])
-      render "mountains/show"
+      render :new
     end
   end
-  
   
   def show
     @review = Review.find(params[:id])
@@ -46,6 +47,6 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:mountain_id, :title, :content, :score, :level, :time, :image)
+    params.require(:review).permit(:mountain_id, :title, :content, :score, :level, :startdate, :alltime, :activetime, :image)
   end
 end
