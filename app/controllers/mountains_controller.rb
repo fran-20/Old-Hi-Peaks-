@@ -7,8 +7,7 @@ class MountainsController < ApplicationController
     if params[:sort_top_review]
       @mountains = @mountains.sort_by { |mountain| mountain.avg_score }.reverse
     else
-      @q = Mountain.ransack(params[:q])
-      @mountains = @q.result.includes(:reviews)
+      @mountains = Mountain.all.includes(:reviews)
     end
     
   end
