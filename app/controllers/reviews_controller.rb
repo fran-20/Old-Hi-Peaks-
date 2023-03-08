@@ -47,6 +47,6 @@ class ReviewsController < ApplicationController
 
   private
   def review_params
-    params.require(:review).permit(:mountain_id, :start_time, :end_time, :number_of_nights, :rest_time, :score, :level, :start_point, :route, :title, :content, :image)
+    params.require(:review).permit(:mountain_id, :date, :nights, :time, :stamina, :score, :level, :title, :content, :image)
   end
 end

@@ -17,6 +17,14 @@ class Mountain < ApplicationRecord
       0.0
     end
   end
+  
+  def avg_stamina
+    unless self.reviews.empty?
+      reviews.average(:stamina).round(1).to_f
+    else
+      0.0
+    end
+  end
 
 
   def self.ransackable_attributes(auth_object = nil)

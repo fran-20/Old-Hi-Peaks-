@@ -32,14 +32,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_01_130341) do
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "mountain_id", null: false
-    t.datetime "start_time"
-    t.datetime "end_time"
-    t.string "number_of_nights"
-    t.integer "rest_time"
+    t.date "date"
+    t.string "nights"
+    t.time "time"
+    t.integer "stamina"
     t.integer "score"
     t.integer "level"
-    t.string "start_point"
-    t.string "route"
     t.string "title"
     t.text "content"
     t.string "image"

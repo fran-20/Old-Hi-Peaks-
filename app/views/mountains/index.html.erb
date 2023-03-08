@@ -1,70 +1,75 @@
-<%= search_form_for @q do |f| %>
-  <%= f.search_field :name_or_kana_cont, placeholder: '山の名前をいれて検索しよう(ひらがな可)' %>
-  <%= f.submit %>
-<% end %>
 
-<%= link_to "評価順", mountains_path(sort_top_review: "true") %>
-<%= link_to "標高順", mountains_path(height: "true") %>
-
-<% @mountains.each do |mountain| %>
-  <div class="container-fluid">
-    
-    <div class="card">
-      <div class="row g-0">
-        <div class="col-3">
-          <img src="#" class="img-fluid w-100" alt="card-horizontal-image">
-        </div>
-        <div class="col-9">
-          <div class="card-body">
-
-            <div class="row">
-              <div class="col-12">
-                <%= link_to mountain_path(mountain) do%>
-                  <h3 class="card-title"><%= mountain.name %>(<%= mountain.kana %>)</h3>
-                <% end %>
+<div class="col">
+  <%= search_form_for @q do |f| %>
+    <%= f.search_field :name_or_kana_cont, placeholder: '山の名前をいれて検索しよう(ひらがな可)' %>
+    <%= f.submit %>
+  <% end %>
+  <%= link_to "評価順", mountains_path(sort_top_review: "true") %>
+  <%= link_to "標高順", mountains_path(height: "true") %>
+</div>
+  
+  <% @mountains.each do |mountain| %>
+      
+      <div class="card">
+        <div class="row g-0">
+          <div class="col-3">
+            <img src="#" class="img-fluid w-100" alt="card-horizontal-image">
+          </div>
+          <div class="col-9">
+            <div class="card-body">
+  
+              <div class="row">
+                <div class="col">
+                  <%= link_to mountain_path(mountain) do%>
+                    <h3 class="card-title"><%= mountain.name %>(<%= mountain.kana %>)</h3>
+                  <% end %>
+                </div>
               </div>
-            </div>
-    
-            <div class="row">
-              <div class="col-12">
-                <h5 class="result-rating-rate">
-                  <span class="star5_rating" data-rate="<%= mountain.avg_score %>"></span>
-                  <span class="number_rating"><%= mountain.avg_score %>点（<%= mountain.reviews.count %>件のレビュー）</span>
-                </h5>
+      
+              <div class="row">
+                <div class="col">
+                  <h5 class="result-rating-rate">
+                    <span class="star5_rating" data-rate="<%= mountain.avg_score %>"></span>
+                    <span class="number_rating"><%= mountain.avg_score %>点（<%= mountain.reviews.count %>件のレビュー）</span>
+                  </h5>
+                </div>
               </div>
-            </div>
-            
-            <div class="row">
-              <div class="col-12">
-                <h5 class="result-rating-rate">
-                  <span class="star5_rating" data-rate="<%= mountain.avg_level %>"></span>
-                  <span class="number_rating"><%= mountain.avg_level %>点（<%= mountain.reviews.count %>件のレビュー）</span>
-                </h5>
+              
+              <div class="row">
+                <div class="col">
+                  <p class="fs-5">難易度Lv.<%= mountain.avg_level %></p>
+                </div>
+                <div class="col">
+                  <p class="fs-5">体力度：<%= mountain.avg_stamina %></p>
+                </div>
+                <div class="col">
+                  <p class="fs-5">行動時間："#"</p>
+                </div>
               </div>
-            </div>
-            
-            <hr>
-    
-            <div class="row">
-              <div class="col-12">
-                <p class="card-title">標高：<%= mountain.height %>m</p>
+              
+              <hr>
+      
+              <div class="row">
+                <div class="col">
+                  <p class="card-title">標高：<%= mountain.height %>m</p>
+                </div>
               </div>
-            </div>
-            
-            <div class="row">
-              <div class="col-12">
-                <p class="card-title">山域：<%= mountain.area %></p>
+              
+              <div class="row">
+                <div class="col">
+                  <p class="card-title">山域：<%= mountain.area %></p>
+                </div>
               </div>
-            </div>
-    
-            <div class="row">
-              <div class="col-2">
-                <%= link_to new_mountain_review_path(mountain) do %>レビューを書く<% end %>
+      
+              <div class="row">
+                <div class="col">
+                  <%= link_to new_mountain_review_path(mountain) do %>レビューを書く<% end %>
+                </div>
               </div>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
+</div>

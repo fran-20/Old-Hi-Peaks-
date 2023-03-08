@@ -3,141 +3,69 @@
     <%= f.hidden_field :mountain_id, value: mountain.id %>
 
     <div class="row">
-      <div class="col-2">
-        <p class="fs-5">
-          山行日時
-        </p>
-      </div>
-      <div class="col-2">
-        <p class="fs-3">
-          <%= f.datetime_local_field :start_time, class: "form-control" %>
-        </p>
-      </div>
-      <div class="col-1">
-        <p class="fs-5">
-          ～
-        </p>
-      </div>
-      <div class="col-2">
-        <p class="fs-3">
-          <%= f.datetime_local_field :end_time, class: "form-control" %>
-        </p>
+      <div class="col">
+        <p class="fs-6">山行開始日</p>
+        <p class="fs-3"><%= f.date_field :date, class: "form-control" %></p>
       </div>
       
-      <div class="col-2">
-        <p class="fs-3">
-          <%= f.select :number_of_nights, [["日帰り", 1], ["1泊2日", 2], ["2泊3日", 3], ["3泊4日", 4], ["4泊5日", 5], ["5泊6日", 5], ["6泊7日", 5], ["7泊8日", 5], ["8泊以上", 5]], {include_blank: "泊数を選択"}, class: "form-control" %>
-        </p>
+      <div class="col">
+        <p class="fs-6">宿泊日数</p>
+        <p class="fs-3"><%= f.select :nights, [["日帰り"], ["1泊2日"], ["2泊3日"], ["3泊4日"], ["4泊5日"], ["5泊6日"], ["6泊7日"], ["7泊以上"]], {include_blank: "選択して下さい"}, class: "form-control" %></p>
+      </div>
+      
+      <div class="col">
+        <p class="fs-6">行動時間(休憩除く)</p>
+        <p class="fs-5"><%= f.time_field :time, class: "form-control" %></p>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-2">
-        <p class="fs-5">
-          <%= f.label :rest_time, "休憩時間" %>
-        </p>
-      </div>
-      <div class="col-2">
-        <p class="fs-3">
-          <%= f.number_field :rest_time, in: 0.0..50.0, step: 0.5, class: "form-control" %>
-        </p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-2">
-        <p class="fs-5">
-          <%= f.label :score, "満足度" %>
-        </p>
-      </div>
-      <div class="col-8">
+      <div class="col">
+        <p class="fs-6">満足度</p>
         <p class="fs-3">
           <%= f.select :score, [["★☆☆☆☆ う～ん", 1], ["★★☆☆☆ 普通", 2], ["★★★☆☆ 良かった", 3], ["★★★★☆ とても良かった", 4], ["★★★★★ 感動した", 5]], {include_blank: "選択して下さい"}, class: "form-control" %>
         </p>
       </div>
-    </div>
 
-    <div class="row">
-      <div class="col-2">
-        <p class="fs-5">
-          <%= f.label :level, "難易度" %>
-        </p>
-      </div>
-      <div class="col-8">
+      <div class="col">
+        <p class="fs-6">難易度</p>
         <p class="fs-3">
         <%= f.select :level, [["超初級",1], ["初級", 2], ["中級", 3], ["上級", 4], ["超上級", 5]], {include_blank: "選択して下さい"}, class: "form-control" %>
         </p>
       </div>
-    </div>
-    
-    <div class="row">
-      <div class="col-2">
-        <p class="fs-5">
-          <%= f.label :start_point, "登山口" %>
-        </p>
-      </div>
-      <div class="col-8">
+      
+      <div class="col">
+        <p class="fs-6">体力度</p>
         <p class="fs-3">
-          <%= f.text_field :start_point, class: "form-control" %>
+        <%= f.select :stamina, [["超初級",1], ["初級", 2], ["中級", 3], ["上級", 4], ["超上級", 5]], {include_blank: "選択して下さい"}, class: "form-control" %>
         </p>
       </div>
     </div>
     
     <div class="row">
-      <div class="col-2">
-        <p class="fs-5">
-          <%= f.label :route, "登山ルート" %>
-        </p>
-      </div>
-      <div class="col-8">
-        <p class="fs-3">
-          <%= f.text_field :route, class: "form-control" %>
-        </p>
+      <div class="col">
+        <p class="fs-6">タイトル</p>
+        <p class="fs-3"><%= f.text_field :title, class: "form-control" %></p>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-2">
-        <p class="fs-5">
-          <%= f.label :title, "タイトル" %>
-        </p>
-      </div>
-      <div class="col-8">
-        <p class="fs-3">
-          <%= f.text_field :title, class: "form-control" %>
-        </p>
+      <div class="col">
+        <p class="fs-6">本文</p>
+        <p class="fs-3"><%= f.text_area :content, class: "form-control", rows: 20 %></p>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-2">
-        <p class="fs-5">
-          <%= f.label :content, "本文" %>
-        </p>
-      </div>
-      <div class="col-8">
-        <p class="fs-3">
-          <%= f.text_area :content, class: "form-control", rows: 10 %>
-        </p>
+      <div class="col">
+        <p class="fs-6">写真</p>
+        <p class="fs-3"><%= f.file_field :image, class: "form-control" %></p>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-2">
-        <p class="fs-5">
-          <%= f.label :image, "写真" %>
-        </p>
-      </div>
-      <div class="col-8">
-        <p class="fs-3">
-          <%= f.file_field :image, class: "form-control" %>
-        </p>
-      </div>
-    </div>
-
-    <div class="row">
-      <div class="col-2">
-        <p class="fs-5">
+      <div class="col">
+        <p class="fs-6">
           <%= f.submit "保存", class: "btn btn-primary" %>
         </p>
       </div>
