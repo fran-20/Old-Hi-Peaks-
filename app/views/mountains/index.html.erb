@@ -7,9 +7,9 @@
   <%= link_to "評価順", mountains_path(sort_top_review: "true") %>
   <%= link_to "標高順", mountains_path(height: "true") %>
 </div>
-  
+
   <% @mountains.each do |mountain| %>
-      
+
       <div class="card">
         <div class="row g-0">
           <div class="col-3">
@@ -17,7 +17,7 @@
           </div>
           <div class="col-9">
             <div class="card-body">
-  
+
               <div class="row">
                 <div class="col">
                   <%= link_to mountain_path(mountain) do%>
@@ -25,7 +25,7 @@
                   <% end %>
                 </div>
               </div>
-      
+
               <div class="row">
                 <div class="col">
                   <h5 class="result-rating-rate">
@@ -34,7 +34,7 @@
                   </h5>
                 </div>
               </div>
-              
+
               <div class="row">
                 <div class="col">
                   <p class="fs-5">難易度Lv.<%= mountain.avg_level %></p>
@@ -46,21 +46,21 @@
                   <p class="fs-5">行動時間："#"</p>
                 </div>
               </div>
-              
+
               <hr>
-      
+
               <div class="row">
                 <div class="col">
                   <p class="card-title">標高：<%= mountain.height %>m</p>
                 </div>
               </div>
-              
+
               <div class="row">
                 <div class="col">
                   <p class="card-title">山域：<%= mountain.area %></p>
                 </div>
               </div>
-      
+
               <div class="row">
                 <div class="col">
                   <%= link_to new_mountain_review_path(mountain) do %>レビューを書く<% end %>
