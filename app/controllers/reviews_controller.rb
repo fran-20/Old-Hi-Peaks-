@@ -10,6 +10,7 @@ class ReviewsController < ApplicationController
     @mountain = Mountain.find(params[:mountain_id])
     @review = Review.new(review_params)
     @review.user_id = current_user.id
+    @review.image.attach(params[:review][:image])
     if @review.save
       redirect_to mountain_path(@mountain)
     else

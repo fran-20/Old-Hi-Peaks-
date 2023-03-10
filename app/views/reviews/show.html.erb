@@ -1,1 +1,3 @@
-<p>test</p>
+<% if @review.image.attached? %>
+  <%= image_tag @review.image.variant(:display) %>
+<% end %>
