@@ -1,3 +1,5 @@
 <% if @review.image.attached? %>
   <%= image_tag @review.image.variant(:display) %>
+<% else %>
+  <%= image_tag "no_image.png" %>
 <% end %>

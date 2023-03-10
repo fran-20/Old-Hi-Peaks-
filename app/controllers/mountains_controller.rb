@@ -14,6 +14,5 @@ class MountainsController < ApplicationController
   
   def show
     @mountain = Mountain.find(params[:id])
-    @review = Review.new
   end
 end

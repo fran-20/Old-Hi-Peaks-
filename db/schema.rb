@@ -43,16 +43,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_105755) do
     t.string "name"
     t.string "kana"
     t.integer "height"
-    t.string "pre1"
-    t.string "pre2"
-    t.string "pre3"
-    t.string "pre4"
     t.string "area"
-    t.string "mont_area"
-    t.string "alias1"
-    t.string "alias2"
-    t.string "alias3"
-    t.string "alias4"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
@@ -60,10 +51,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_03_10_105755) do
   create_table "reviews", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "mountain_id", null: false
-    t.date "date"
-    t.string "nights"
-    t.time "time"
-    t.integer "stamina"
+    t.datetime "start"
+    t.datetime "end"
     t.integer "score"
     t.integer "level"
     t.string "title"

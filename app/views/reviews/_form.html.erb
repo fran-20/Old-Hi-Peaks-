@@ -4,69 +4,58 @@
 
     <div class="row">
       <div class="col">
-        <p class="fs-6">山行開始日</p>
-        <p class="fs-3"><%= f.date_field :date, class: "form-control" %></p>
+        <p class="h3">開始日時</p>
+        <p class="fs-3"><%= f.datetime_field :start, class: "form-control form-control-lg" %></p>
       </div>
-      
+
       <div class="col">
-        <p class="fs-6">宿泊日数</p>
-        <p class="fs-3"><%= f.select :nights, [["日帰り"], ["1泊2日"], ["2泊3日"], ["3泊4日"], ["4泊5日"], ["5泊6日"], ["6泊7日"], ["7泊以上"]], {include_blank: "選択して下さい"}, class: "form-control" %></p>
-      </div>
-      
-      <div class="col">
-        <p class="fs-6">行動時間(休憩除く)</p>
-        <p class="fs-5"><%= f.time_field :time, class: "form-control" %></p>
+        <p class="h3">終了日時</p>
+        <p class="fs-3"><%= f.datetime_field :end, class: "form-control form-control-lg" %></p>
       </div>
     </div>
 
     <div class="row">
       <div class="col">
-        <p class="fs-6">満足度</p>
+        <p class="h3">満足度</p>
         <p class="fs-3">
-          <%= f.select :score, [["★☆☆☆☆ う～ん", 1], ["★★☆☆☆ 普通", 2], ["★★★☆☆ 良かった", 3], ["★★★★☆ とても良かった", 4], ["★★★★★ 感動した", 5]], {include_blank: "選択して下さい"}, class: "form-control" %>
+          <%= f.select :score, [["1 - もう登らなくてもいい", 1], ["2 - どちらとも言えない", 2], ["3 - 機会があればまた登りたい", 3], ["4 - また登りたい", 4], ["5 - 絶対また登りたい", 5]], {include_blank: "選択して下さい"}, class: "form-control form-control-lg" %>
         </p>
       </div>
 
       <div class="col">
-        <p class="fs-6">難易度</p>
+        <p class="h3">難易度(Lv.1～Lv.100)</p>
         <p class="fs-3">
-        <%= f.select :level, [["超初級",1], ["初級", 2], ["中級", 3], ["上級", 4], ["超上級", 5]], {include_blank: "選択して下さい"}, class: "form-control" %>
+        <%= f.number_field :level, class: "form-control form-control-lg", in: 0.0..100.0, step: 5 %>
         </p>
       </div>
-      
-      <div class="col">
-        <p class="fs-6">体力度</p>
-        <p class="fs-3">
-        <%= f.select :stamina, [["超初級",1], ["初級", 2], ["中級", 3], ["上級", 4], ["超上級", 5]], {include_blank: "選択して下さい"}, class: "form-control" %>
-        </p>
-      </div>
+
     </div>
-    
+
     <div class="row">
       <div class="col">
         <p class="fs-6">タイトル</p>
-        <p class="fs-3"><%= f.text_field :title, class: "form-control" %></p>
+        <p class="fs-3"><%= f.text_field :title, class: "form-control form-control-lg" %></p>
       </div>
     </div>
 
     <div class="row">
       <div class="col">
         <p class="fs-6">本文</p>
-        <p class="fs-3"><%= f.text_area :content, class: "form-control", rows: 20 %></p>
+        <p class="fs-3"><%= f.text_area :content, class: "form-control form-control-lg", rows: 20 %></p>
       </div>
     </div>
 
     <div class="row">
       <div class="col">
         <p class="fs-6">写真</p>
-        <p class="fs-3"><%= f.file_field :image, class: "form-control" %></p>
+        <p class="fs-3"><%= f.file_field :image, accept: "image/jpeg,image/gif,image/png", class: "form-control form-control-lg" %></p>
       </div>
     </div>
 
     <div class="row">
       <div class="col">
         <p class="fs-6">
-          <%= f.submit "保存", accept: "image/jpeg,image/gif,image/png", class: "btn btn-primary" %>
+          <%= f.submit "保存", class: "btn btn-primary" %>
         </p>
       </div>
     </div>

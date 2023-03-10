@@ -1,6 +1,6 @@
 class ReviewsController < ApplicationController
   before_action :authenticate_user!
-  
+
   def new
     @mountain = Mountain.find(params[:mountain_id])
     @review = Review.new
@@ -18,11 +18,11 @@ class ReviewsController < ApplicationController
       render :new
     end
   end
-  
+
   def show
     @review = Review.find(params[:id])
   end
-  
+
   def edit
     @review = Review.find(params[:id])
     if @review.user != current_user
@@ -44,10 +44,10 @@ class ReviewsController < ApplicationController
     @review.destroy
     redirect_back(fallback_location: root_path)
   end
-  
+
 
   private
   def review_params
-    params.require(:review).permit(:mountain_id, :date, :nights, :time, :score, :level, :title, :content, :image)
+    params.require(:review).permit(:mountain_id, :start, :end, :nights, :score, :level, :title, :content, :image)
   end
 end
